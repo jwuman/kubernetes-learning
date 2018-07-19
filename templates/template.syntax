@@ -1,0 +1,34 @@
+apiVersion: #api version
+
+kind: #kubernetes object: Service, Deployment
+
+metadata:
+  name: # name of the deployment
+  label: 
+    labels:
+      app: #<deployment> name of the app
+      run: #<service> name of the app
+spec:
+# <Deployment> only
+  replicas: #<deployment> number of instance wanted
+  selector:
+    matchLabels:
+      app: #name of the app
+  template:
+    metadata:
+      labels:
+        app: # name of the app
+    spec:
+      containers:
+      - name: # name of the container
+        image: # name of the image to pull
+        ports:
+        - containerPort: #port number
+
+#<Service> only
+  ports:
+  - port: # port number
+    protocol: # tcp/udp
+  selector:
+    app: # name of the app
+  
